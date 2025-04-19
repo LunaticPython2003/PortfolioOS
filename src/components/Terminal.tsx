@@ -2,6 +2,8 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Github, Linkedin, Twitter, Mail } from 'lucide-react';
 import portfolioData from '../data/portfolio.json';
+import neofetchData from '../data/neofetch.json';
+
 
 type Command = {
   input: string;
@@ -24,7 +26,55 @@ const Terminal: React.FC<TerminalProps> = ({ textColor = 'green' }) => {
     return textColor === 'amber' ? 'text-terminal-amber' : 'text-terminal-green';
   };
 
+  const showNeofetch = () => {
+    addOutput(
+      <div className="flex flex-col md:flex-row gap-2">
+        {/* ASCII art */}
+        <div className="text-blue-400 font-mono whitespace-pre">
+          {neofetchData.ascii.map((line, i) => (
+            <div key={i}>{line}</div>
+          ))}
+        </div>
+        
+        <div className="ml-0 md:ml-4 text-white">
+          <div className="text-terminal-amber">{neofetchData.user}</div>
+          <div>{neofetchData.separator}</div>
+          <div>{neofetchData.os}</div>
+          <div>{neofetchData.host}</div>
+          <div>{neofetchData.kernel}</div>
+          <div>{neofetchData.packages}</div>
+          <div>{neofetchData.shell}</div>
+          <div>{neofetchData.display}</div>
+          <div>{neofetchData.de}</div>
+          <div>{neofetchData.wm}</div>
+          <div>{neofetchData.terminal}</div>
+          <div>{neofetchData.cpu}</div>
+          <div>{neofetchData.gpu1}</div>
+          <div>{neofetchData.memory.replace("18%", <span className="text-terminal-green">18%</span>)}</div>
+          <div>{neofetchData.disk.replace("36%", <span className="text-terminal-green">36%</span>)}</div>
+          <div>{neofetchData.local_ip}</div>
+          <div>{neofetchData.locale}</div>
+          
+          {/* Color blocks */}
+          <div className="flex mt-4">
+            {neofetchData.colors.slice(0, 8).map((color, i) => (
+              <div key={i} className="w-6 h-6" style={{ backgroundColor: color }}></div>
+            ))}
+          </div>
+          <div className="flex">
+            {neofetchData.colors.slice(8).map((color, i) => (
+              <div key={i} className="w-6 h-6" style={{ backgroundColor: color }}></div>
+            ))}
+          </div>
+        </div>
+      </div>
+    );
+  };
+
   useEffect(() => {
+    // Show neofetch first, then welcome message
+    showNeofetch();
+    
     addOutput(`Welcome to the Terminal Portfolio of ${portfolioData.personal.name}!
 Type 'help' to see available commands.`);
     
