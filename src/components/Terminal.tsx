@@ -3,38 +3,45 @@ import { Github, Linkedin, Twitter, Mail } from 'lucide-react';
 import portfolioData from '../data/portfolio.json'; type Command = {
     input: string;
     output: React.ReactNode;
-}; const Terminal: React.FC = () => {
+};
+
+const Terminal: React.FC = () => {
     const [commands, setCommands] = useState<Command[]>([]);
     const [currentInput, setCurrentInput] = useState('');
     const [commandHistory, setCommandHistory] = useState<string[]>([]);
     const [historyIndex, setHistoryIndex] = useState(-1);
     const terminalRef = useRef<HTMLDivElement>(null);
-    const inputRef = useRef<HTMLInputElement>(null);  // Initial welcome message
+    const inputRef = useRef<HTMLInputElement>(null);
+
     useEffect(() => {
         addOutput(`Welcome to the Terminal Portfolio of ${portfolioData.personal.name}!
 Type 'help' to see available commands.`);
-
         if (inputRef.current) {
             inputRef.current.focus();
         }
     }, []);
+
     useEffect(() => {
         if (terminalRef.current) {
             terminalRef.current.scrollTop = terminalRef.current.scrollHeight;
         }
     }, [commands]);
+
     useEffect(() => {
         const handleClick = () => {
             if (inputRef.current) {
                 inputRef.current.focus();
             }
         };
-
         document.addEventListener('click', handleClick);
         return () => document.removeEventListener('click', handleClick);
-    }, []); const addOutput = (output: React.ReactNode) => {
+    }, []);
+
+    const addOutput = (output: React.ReactNode) => {
         setCommands(prev => [...prev, { input: '', output }]);
-    }; const processCommand = (cmd: string) => {
+    };
+
+    const processCommand = (cmd: string) => {
         setCommands(prev => [...prev, { input: cmd, output: null }]);
         setCommandHistory(prev => [cmd, ...prev]);
         setHistoryIndex(-1); const trimmedCmd = cmd.trim().toLowerCase();
@@ -75,7 +82,7 @@ Type 'help' to see available commands.`);
                 return addOutput(`Command not found: ${command}. Type 'help' for available commands.`);
         }
     };
-    
+
     const showHelp = () => {
         addOutput(
             <div className="space-y-1">
@@ -98,11 +105,11 @@ Type 'help' to see available commands.`);
             </div>
         );
     };
-    
+
     const clearTerminal = () => {
         setCommands([]);
-    }; 
-    
+    };
+
     const showAbout = () => {
         addOutput(
             <div className="space-y-2">
@@ -114,7 +121,7 @@ Type 'help' to see available commands.`);
             </div>
         );
     };
-    
+
     const listItems = (directory?: string) => {
         if (!directory) {
             addOutput(
@@ -146,41 +153,50 @@ Type 'help' to see available commands.`);
         } else {
             addOutput(`Directory not found: ${directory}`);
         }
-    }; 
-    
+    };
+
     const showFile = (filename?: string) => {
         if (!filename) {
             addOutput('Usage: cat [filename]');
             return;
-        } if (filename === 'about.txt') {
+        }
+        if (filename === 'about.txt') {
             showAbout();
-        } else if (filename === 'contact.txt') {
+        }
+        else if (filename === 'contact.txt') {
             showContact();
-        } else if (filename === 'experience.json') {
+        }
+        else if (filename === 'experience.json') {
             showExperience();
-        } else if (filename === 'education.json') {
+        }
+        else if (filename === 'education.json') {
             showEducation();
-        } else if (filename.endsWith('.json')) {
+        }
+        else if (filename.endsWith('.json')) {
             // Check if it's a project file
             const projectName = filename.replace('.json', '').replace(/-/g, ' ');
             const project = portfolioData.projects.find(
                 p => p.title.toLowerCase() === projectName
-            ); if (project) {
+            );
+            if (project) {
                 showProject(project);
-            } else {
+            }
+            else {
                 // Check if it's a skills category
                 const category = filename.replace('.json', '');
                 if (portfolioData.skills[category as keyof typeof portfolioData.skills]) {
                     showSkillCategory(category);
-                } else {
+                }
+                else {
                     addOutput(`File not found: ${filename}`);
                 }
             }
-        } else {
+        }
+        else {
             addOutput(`File not found: ${filename}`);
         }
-    }; 
-    
+    };
+
     const showProject = (project: typeof portfolioData.projects[0]) => {
         addOutput(
             <div className="space-y-2 border border-terminal-green p-3 rounded">
@@ -199,7 +215,7 @@ Type 'help' to see available commands.`);
             </div>
         );
     };
-    
+
     const showSkillCategory = (category: string) => {
         const skills = portfolioData.skills[category as keyof typeof portfolioData.skills];
         if (!skills) {
@@ -217,8 +233,8 @@ Type 'help' to see available commands.`);
                 </div>
             </div>
         );
-    }; 
-    
+    };
+
     const showSocial = () => {
         addOutput(
             <div className="space-y-3">
@@ -242,8 +258,8 @@ Type 'help' to see available commands.`);
                 </div>
             </div>
         );
-    }; 
-    
+    };
+
     const showProjects = () => {
         addOutput(
             <div className="space-y-4">
@@ -268,8 +284,8 @@ Type 'help' to see available commands.`);
                 </div>
             </div>
         );
-    }; 
-    
+    };
+
     const showSkills = () => {
         addOutput(
             <div className="space-y-4">
@@ -289,7 +305,7 @@ Type 'help' to see available commands.`);
             </div>
         );
     };
-    
+
     const showExperience = () => {
         addOutput(
             <div className="space-y-4">
@@ -304,8 +320,8 @@ Type 'help' to see available commands.`);
                 ))}
             </div>
         );
-    }; 
-    
+    };
+
     const showEducation = () => {
         addOutput(
             <div className="space-y-4">
@@ -319,8 +335,8 @@ Type 'help' to see available commands.`);
                 ))}
             </div>
         );
-    }; 
-    
+    };
+
     const showContact = () => {
         addOutput(
             <div className="space-y-2">
@@ -330,21 +346,21 @@ Type 'help' to see available commands.`);
                 <div className="mt-2">{portfolioData.contact.availability}</div>
             </div>
         );
-    }; 
-    
+    };
+
     const rebootSystem = () => {
         addOutput("Rebooting system...");
         setTimeout(() => {
             window.location.reload();
         }, 1500);
-    }; 
-    
+    };
+
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
         processCommand(currentInput);
         setCurrentInput('');
-    }; 
-    
+    };
+
     const handleKeyDown = (e: React.KeyboardEvent) => {
         if (e.key === 'ArrowUp') {
             e.preventDefault();
@@ -364,8 +380,8 @@ Type 'help' to see available commands.`);
         } else if (e.key === 'Tab') {
             e.preventDefault();
         }
-    }; 
-    
+    };
+
     return (
         <div className="text-terminal-green font-terminal h-full overflow-y-auto" ref={terminalRef}>
             <div className="space-y-2 mb-4">

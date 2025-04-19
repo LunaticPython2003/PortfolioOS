@@ -1,10 +1,12 @@
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import CRTMonitor from '../components/CRTMonitor';
 
 const Index = () => {
   const [isExpanded, setIsExpanded] = useState(false);
   const [showContent, setShowContent] = useState(false);
+  const prevScrollY = useRef(0);
+  const hasExpanded = useRef(false);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -14,25 +16,40 @@ const Index = () => {
     return () => clearTimeout(timer);
   }, []);
 
-  const handleExpand = () => {
-    setIsExpanded(true);
-    document.body.classList.add('overflow-hidden');
-  };
-
-  const handleKeyDown = (e: KeyboardEvent) => {
-    if (e.key === 'Escape' && isExpanded) {
-      setIsExpanded(false);
-      document.body.classList.remove('overflow-hidden');
-    }
-  };
-
   useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      
+      if (currentScrollY > 50 && !hasExpanded.current) {
+        handleExpand();
+        hasExpanded.current = true;
+      }
+      prevScrollY.current = currentScrollY;
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape' && isExpanded) {
+        setIsExpanded(false);
+        document.body.classList.remove('overflow-hidden');
+        hasExpanded.current = false; // Reset expansion state
+      }
+    };
+
     document.addEventListener('keydown', handleKeyDown);
+
     return () => {
+      window.removeEventListener('scroll', handleScroll);
       document.removeEventListener('keydown', handleKeyDown);
       document.body.classList.remove('overflow-hidden');
     };
   }, [isExpanded]);
+
+  const handleExpand = () => {
+    setIsExpanded(true);
+    document.body.classList.add('overflow-hidden');
+  };
 
   if (!showContent) {
     return <div className="min-h-screen bg-black" />;
@@ -46,8 +63,8 @@ const Index = () => {
             Madhurjya Dasgupta Portfolio
           </h1>
           <p className="text-gray-300 max-w-2xl mx-auto">
-            A vintage terminal interface showcasing my projects and skills.
-            Interact with the terminal below to explore.
+            A vintage computer interface showcasing my projects and skills.
+            Scroll down to explore the terminal.
           </p>
         </header>
       </div>
@@ -55,8 +72,11 @@ const Index = () => {
       <CRTMonitor isExpanded={isExpanded} onExpand={handleExpand} />
 
       <div className={`max-w-4xl mx-auto mt-8 text-center text-gray-400 transition-opacity duration-500 ${isExpanded ? 'opacity-0' : 'opacity-100'}`}>
-        <p className="mb-2">Try these commands: <code className="text-terminal-green">whoami</code>, <code className="text-terminal-green">projects</code>, <code className="text-terminal-green">skills</code>, <code className="text-terminal-green">help</code></p>
-        <p className="text-sm">Press <kbd className="px-2 py-1 bg-gray-800 rounded text-xs">ESC</kbd> to exit full screen mode.</p>
+        <p className="mb-2">Scroll down to expand the terminal</p>
+        <p className="text-sm">When expanded, try these commands: <code className="text-terminal-green">whoami</code>, <code className="text-terminal-green">projects</code>, <code className="text-terminal-green">skills</code>, <code className="text-terminal-green">help</code></p>
+        <p className="text-sm mt-2">Press <kbd className="px-2 py-1 bg-gray-800 rounded text-xs">ESC</kbd> to exit full screen mode.</p>
+        
+        <div className="h-40"></div>
       </div>
     </div>
   );
