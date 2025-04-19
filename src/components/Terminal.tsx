@@ -141,6 +141,8 @@ Type 'help' to see available commands.`);
         return addOutput(new Date().toString());
       case 'reboot':
         return rebootSystem();
+      case 'neofetch':
+        return showNeofetch();
       case '':
         return;
       default:
@@ -154,6 +156,7 @@ Type 'help' to see available commands.`);
         <div className="text-terminal-amber font-bold">Available commands:</div>
         <div><span className="text-terminal-green">help</span> - Show this help message</div>
         <div><span className="text-terminal-green">clear</span> - Clear the terminal</div>
+        <div><span className='text-terminal-green'>neofetch</span> - Show the systme specifications</div>
         <div><span className="text-terminal-green">whoami</span> - About me</div>
         <div><span className="text-terminal-green">ls</span> - List directory contents</div>
         <div><span className="text-terminal-green">ls projects</span> - List projects</div>
