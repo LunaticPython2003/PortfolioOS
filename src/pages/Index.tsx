@@ -74,8 +74,7 @@ const Index = () => {
       <div className={`max-w-4xl mx-auto mt-8 text-center text-gray-400 transition-opacity duration-500 ${isExpanded ? 'opacity-0' : 'opacity-100'}`}>
         <p className="mb-2">Scroll down to expand the terminal</p>
         <p className="text-sm">When expanded, try these commands: <code className="text-terminal-green">whoami</code>, <code className="text-terminal-green">projects</code>, <code className="text-terminal-green">skills</code>, <code className="text-terminal-green">help</code></p>
-        <p className="text-sm mt-2">Press <kbd className="px-2 py-1 bg-gray-800 rounded text-xs">ESC</kbd> to exit full screen mode.</p>
-        
+        <p className="text-sm mt-2">Press <kbd className="px-2 py-1 bg-gray-800 rounded text-xs">ESC</kbd> or scroll up to exit full screen mode.</p>        
         <div className="h-40"></div>
       </div>
     </div>

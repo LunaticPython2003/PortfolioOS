@@ -1,7 +1,6 @@
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Terminal from './Terminal';
-import { ChevronUp } from 'lucide-react';
 
 interface CRTMonitorProps {
   isExpanded: boolean;
@@ -11,7 +10,8 @@ interface CRTMonitorProps {
 const CRTMonitor: React.FC<CRTMonitorProps> = ({ isExpanded, onExpand }) => {
   const [isBooting, setIsBooting] = useState(true);
   const [bootMessages, setBootMessages] = useState<string[]>([]);
-  const [showScrollButton, setShowScrollButton] = useState(false);
+  const lastScrollY = useRef(0);
+  const scrollThreshold = 50;
 
   useEffect(() => {
     const messages = [
@@ -31,7 +31,7 @@ const CRTMonitor: React.FC<CRTMonitorProps> = ({ isExpanded, onExpand }) => {
         clearInterval(timer);
         setTimeout(() => {
           setIsBooting(false);
-        }, 5000);
+        }, 1000);
       }
     }, 300);
 
@@ -39,22 +39,28 @@ const CRTMonitor: React.FC<CRTMonitorProps> = ({ isExpanded, onExpand }) => {
   }, []);
 
   useEffect(() => {
+    if (!isExpanded) return;
+
     const handleScroll = () => {
-      setShowScrollButton(window.scrollY > 100);
+      const currentScrollY = window.scrollY;
+      
+      if (isExpanded && currentScrollY < lastScrollY.current && currentScrollY < scrollThreshold) {
+        returnToPage();
+      }
+      
+      lastScrollY.current = currentScrollY;
     };
     
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [isExpanded]);
 
-  const scrollBackToTop = () => {
+  const returnToPage = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
-    if (isExpanded) {
-      document.body.classList.remove('overflow-hidden');
-      setTimeout(() => {
-        window.location.reload();
-      }, 500);
-    }
+    document.body.classList.remove('overflow-hidden');
+    setTimeout(() => {
+      window.location.reload();
+    }, 500);
   };
 
   const monitorClasses = isExpanded 
@@ -126,37 +132,6 @@ const CRTMonitor: React.FC<CRTMonitorProps> = ({ isExpanded, onExpand }) => {
           </>
         )}
       </div>
-      
-      {(isExpanded || showScrollButton) && (
-        <button 
-          onClick={scrollBackToTop}
-          className="fixed bottom-6 right-6 z-50 flex items-center justify-center gap-2 bg-zinc-800/70 text-terminal-amber py-2 px-4 rounded-full hover:bg-zinc-700/70 transition-colors shadow-lg"
-          aria-label="Scroll back to top"
-        >
-          <ChevronUp size={20} />
-          <span className="hidden sm:inline">Back to CRT</span>
-        </button>
-      )}
-      
-      {isExpanded && (
-        <button 
-          onClick={() => {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-            document.body.classList.remove('overflow-hidden');
-            setTimeout(() => {
-              const currentScrollY = window.scrollY;
-              if (currentScrollY < 50) {
-                document.body.classList.remove('overflow-hidden');
-                window.location.reload();
-              }
-            }, 500);
-          }}
-          className="fixed top-4 right-4 z-50 flex items-center gap-2 bg-zinc-800/70 text-terminal-amber py-2 px-4 rounded-md hover:bg-zinc-700/70 transition-colors"
-        >
-          <ChevronUp size={16} />
-          Return to Page
-        </button>
-      )}
     </div>
   );
 };
