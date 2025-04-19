@@ -1,0 +1,133 @@
+{
+
+
+
+    "personal": {
+      "name": "Mahdhurjya Dasgupta",
+      "title": "Software Engineer",
+      "location": "Mumbai, India",
+      "description": "Driven and adaptable professional with a strong background in Full Stack Development, generative AI technologies, and a passion for creating innovative solutions. Proficient in JavaScript, TypeScript, and Python, with hands-on experience in building scalable web applications and integrating AI capabilities. Committed to continuous learning and staying updated with the latest industry trends. Also a Generative AI enthusiast with a keen interest in exploring the intersection of technology and creativity. Seeking opportunities to leverage my skills in a dynamic and collaborative environment.",
+      "availability": "Open to new opportunities"
+    },
+
+    "social": [
+
+      {
+        "name": "GitHub",
+        "url": "https://github.com/LunaticPython2003",
+        "icon": "github"
+      },
+
+      {
+        "name": "LinkedIn",
+        "url": "https://www.linkedin.com/in/madhurjya-dasgupta-305612159/",
+        "icon": "linkedin"
+      },
+
+
+      {
+        "name": "Email",
+        "url": "mailto:dasguptamadhurjya@gmail.com",
+        "icon": "mail"
+      }
+
+    ],
+
+    "projects": [
+
+      {
+        "title": "WinAssist",
+        "description": "An interactive modular ChatBot assistant capable of handling a wide variety of user requests by branching tasks to specialized chains. The chains, built using Branching Chain architecture of LangChain process specific intents execute the required functions, and return the corresponding response to the user. Built with Flask and Python, the assistant has native access to the Windows APIs and integrates several features like system control, multimedia handling, and more.",
+        "technologies": ["Python", "Large Language Model", "Langchain", "FastAPI", "Windows APIs"],
+        "link": "https://github.com/LunaticPython2003/WinAssist"
+
+      },
+
+      {
+        "title": "PDFire",
+        "description": "A basic image to PDF converter built with Flask and Python. The app allows users to upload images, which are then converted into a PDF file. The generated PDF can be downloaded directly from the web interface.",
+        "technologies": ["Python", "Flask", "HTML", "CSS", "Tailwind"],
+        "link": "https://github.com/LunaticPython2003/PDFire"
+      },
+
+      {
+        "title": "ArchIntelligence",
+        "description": "A generative AI project that generates system specifications for a custom Arch Linux installation. The project uses a large language model to understand user requirements through natural language input and generates the list of packages and configurations needed for the installation. The generated specifications can be used to create a custom Arch Linux ISO.",
+        "technologies": ["Streamlit", "Python", "Large Language Model", "Langchain"],
+        "link": "https://github.com/LunaticPython2003/ArchIntelligence"
+      },
+
+      {
+        "title": "fsociety",
+        "description": "The toolkit, inspired by the TV show Mr. Robot, is a collection of scripts and tools designed to automate various tasks related to system security and penetration testing. The toolkit includes modules for network scanning, password cracking, and other security-related tasks - the same tools used by the show's protagonist, Elliot Alderson to bring down Evil Corp.",
+        "technologies": ["Python", "Shell Scripting"],
+        "link": "https://github.com/LunaticPython2003/fsociety"
+      },
+
+      {
+        "title": "Eshaara",
+        "description": "A real time Indian Sign Language to text to audio translator. The app uses a webcam to capture sign language gestures and translates them into text and audio output. The project aims to improve communication for the hearing impaired community. Awarded the Best Project in Dell's Hack-2-Hire Hackathon 2023.",
+        "technologies": ["Python", "Flask", "HTML", "CSS", "TensorFlow", "OpenCV", "MediaPipe", "Natural Language Processing", "Computer Vision"],
+        "link": "https://github.com/LunaticPython2003/Hack-2-Hire"
+      },
+
+      {
+        "title": "iOS 17 SideJIT",
+        "description": "A module to enable Just In Time Compilation Support for iOS devices >=17.0 <17.4. The module addresses the issues preventing users from using JIT compilation on iOS 17 devices. JIT compilation is needed for running certain applications and games that require dynamic code generation. The module is designed to be easy to install and use, making it accessible to a wide range of users.",
+        "technologies": ["Python", "iOS", "Windows DLLs"],
+        "link": "https://github.com/LunaticPython2003/Hack-2-Hire"
+      },
+
+      {
+        "title": "Automobile Support Bridge",
+        "description": "An AI based AR application that provides real-time support for automobile repairs. The app uses augmented reality to overlay instructions and diagrams on the user's view of the car, making it easier to follow along with the repair process. The project aims to improve the efficiency and accuracy of automobile repairs, reducing the need for expensive service center visits.",
+        "technologies": ["Python", "Flask", "Augmented Reality","TensorFlow", "OpenCV", "MediaPipe", "Computer Vision"],
+        "link": "https://github.com/LunaticPython2003/Hack-2-Hire"
+      }
+      
+    ],
+
+    "skills": {
+      "languages": ["JavaScript", "TypeScript", "Python", "Shell", "Dart", "SQL"],
+      "frontend": ["React", "Angular", "Next.js", "Tailwind CSS", "Redux", "Flutter"],
+      "backend": ["Express", "Django", "FastAPI", "Flask","REST API"],
+      "databases": ["MongoDB", "PostgreSQL", "MySQL", "Redis"],
+      "ai/ml": ["TensorFlow", "PyTorch", "OpenCV", "LangChain", "LangGraph", "Scikit-learn", "MediaPipe"],
+      "tools": ["VS Code", "Postman", "Jest", "git", "GitHub Actions"]
+    },
+
+    "experience": [
+
+      {
+        "company": "Tublight Communications Limited",
+        "position": "Backend Developer",
+        "period": "Jan 2025 - Present",
+        "description": "Developing and maintaining backend services using Pythonic backend libraries (Flask, Fast, Django). Collaborating with frontend developers to integrate APIs and ensure seamless user experiences. Implementing security measures and optimizing performance for high-traffic applications."
+      },
+
+      {
+        "company": "Dell Technologies",
+        "position": "Software Developer Intern",
+        "period": "May 2024 - Jul 2024",
+        "description": "Worked on a team to develop Micro Frontend applications in Angular. Collaborated closely with the UI/UX team and transformed Figma designs into functional web applications. Gained experience in Agile development methodologies and participated in code reviews and team meetings."
+      }
+
+    ],
+
+    "education": [
+
+      {
+        "institution": "Sikkim Manipal Instiute of Technology",
+        "degree": "B.Tech Computer Science",
+        "period": "2021 - 2025"
+      }
+
+    ],
+
+    "contact": {
+      "email": "dasguptamadhurjya@gmail.com",
+      "phone": "+91 70990 63254",
+      "availability": "Available for internship and full-time positions"
+    }
+
+  }
