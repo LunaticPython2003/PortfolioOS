@@ -50,8 +50,8 @@ const Terminal: React.FC<TerminalProps> = ({ textColor = 'green' }) => {
           <div>{neofetchData.terminal}</div>
           <div>{neofetchData.cpu}</div>
           <div>{neofetchData.gpu1}</div>
-          <div>{neofetchData.memory.replace("18%", <span className="text-terminal-green">18%</span>)}</div>
-          <div>{neofetchData.disk.replace("36%", <span className="text-terminal-green">36%</span>)}</div>
+          <div>{neofetchData.memory}</div>
+          <div>{neofetchData.disk}</div>
           <div>{neofetchData.local_ip}</div>
           <div>{neofetchData.locale}</div>
           
