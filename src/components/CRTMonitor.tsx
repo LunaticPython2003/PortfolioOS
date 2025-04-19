@@ -19,7 +19,7 @@ const CRTMonitor: React.FC<CRTMonitorProps> = ({ isExpanded, onExpand }) => {
       "-Display 1-",
       "PLEASE SELECT OPERATING SYSTEM TO BOOT:",
       "Portfolio OS",
-      "STANDBY FOR AUTOMATIC BOOT IN 20",
+      "STANDBY FOR AUTOMATIC BOOT IN 2 SECONDS",
     ];
 
     let index = 0;
