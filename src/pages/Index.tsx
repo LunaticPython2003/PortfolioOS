@@ -33,7 +33,7 @@ const Index = () => {
       if (e.key === 'Escape' && isExpanded) {
         setIsExpanded(false);
         document.body.classList.remove('overflow-hidden');
-        hasExpanded.current = false; // Reset expansion state
+        hasExpanded.current = false; 
       }
     };
 
@@ -59,7 +59,7 @@ const Index = () => {
     <div className="min-h-screen bg-zinc-900 py-8 px-4 sm:px-6 transition-all duration-300">
       <div className={`transition-opacity duration-500 ${isExpanded ? 'opacity-0' : 'opacity-100'}`}>
         <header className="max-w-4xl mx-auto mb-12 text-white text-center">
-          <h1 className="text-3xl sm:text-4xl font-bold mb-4 font-terminal text-terminal-green animate-text-flicker">
+          <h1 className="text-3xl sm:text-4xl font-bold mb-4 font-terminal text-terminal-amber animate-text-flicker">
             Madhurjya Dasgupta Portfolio
           </h1>
           <p className="text-gray-300 max-w-2xl mx-auto">
