@@ -1,7 +1,7 @@
 # Portfolio OS - Vintage CRT Terminal Portfolio
 A retro-inspired portfolio website that simulates a classic CRT monitor and terminal interface. This project creates an interactive and nostalgic experience where visitors can use terminal commands to explore your professional portfolio.
 
-### [Link to My Portfolio](https://madhurjya.me/PortfolioOS)
+### [Link to My Portfolio](https://madhurjya.me)
 
 
 ## Features
