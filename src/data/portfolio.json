@@ -5,9 +5,9 @@
     "personal": {
       "name": "Mahdhurjya Dasgupta",
       "title": "Software Engineer",
-      "location": "Mumbai, India",
+      "location": "Bhubaneswar, India",
       "description": "Driven and adaptable professional with a strong background in Full Stack Development, generative AI technologies, and a passion for creating innovative solutions. Proficient in JavaScript, TypeScript, and Python, with hands-on experience in building scalable web applications and integrating AI capabilities. Committed to continuous learning and staying updated with the latest industry trends. Also a Generative AI enthusiast with a keen interest in exploring the intersection of technology and creativity. Seeking opportunities to leverage my skills in a dynamic and collaborative environment.",
-      "availability": "Open to new opportunities"
+      "availability": "Employed"
     },
 
     "social": [
@@ -88,21 +88,27 @@
     ],
 
     "skills": {
-      "languages": ["JavaScript", "TypeScript", "Python", "Shell", "Dart", "SQL"],
+      "languages": ["JavaScript", "TypeScript", "Python", "Shell", "Dart", "SQL", "SAP ABAP"],
       "frontend": ["React", "Angular", "Next.js", "Tailwind CSS", "Redux", "Flutter"],
       "backend": ["Express", "Django", "FastAPI", "Flask","REST API"],
       "databases": ["MongoDB", "PostgreSQL", "MySQL", "Redis"],
       "ai/ml": ["TensorFlow", "PyTorch", "OpenCV", "LangChain", "LangGraph", "Scikit-learn", "MediaPipe"],
-      "tools": ["VS Code", "Postman", "Jest", "git", "GitHub Actions"]
+      "tools": ["SAP Basis", "Fiori", "SAP GRC and Security"]
     },
 
     "experience": [
-
+    {
+            "company": "Tata Power Northern Odisha Distribution Limited",
+            "position": "Graduate Engineer Trainee",
+            "period": "Feb 2026 - Present",
+            "description": "Helping organize S/4HANA systems across the company landscape and working alongside the team to maintain GRC and Security within the system."
+     
+        },
       {
         "company": "Tublight Communications Limited",
         "position": "Backend Developer",
-        "period": "Jan 2025 - Present",
-        "description": "Developing and maintaining backend services using Pythonic backend libraries (Flask, Fast, Django). Collaborating with frontend developers to integrate APIs and ensure seamless user experiences. Implementing security measures and optimizing performance for high-traffic applications."
+        "period": "Jan 2025 - May 2025",
+        "description": "Developed and maintained backend services using Pythonic backend libraries (Flask, Fast, Django). Collaborating with frontend developers to integrate APIs and ensure seamless user experiences. Implementing security measures and optimizing performance for high-traffic applications."
       },
 
       {
@@ -127,7 +133,7 @@
     "contact": {
       "email": "dasguptamadhurjya@gmail.com",
       "phone": "+91 70990 63254",
-      "availability": "Available for internship and full-time positions"
+      "availability": "Employed at Tata Power"
     }
 
   }
