@@ -2,7 +2,7 @@ name: Deploy Next.js site to Pages
 
 on:
   push:
-    branches: ["main"] # Triggers on pushes to your main branch
+    branches: ["master"] # Triggers on pushes to your main branch
   workflow_dispatch: # Allows manual pipeline triggering from the Actions UI
 
 permissions:
